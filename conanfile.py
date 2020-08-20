@@ -6,7 +6,7 @@ from conans import ConanFile, CMake, tools
 
 class SigslotConan(ConanFile):
     name = "json"
-    version = "3.1.9"
+    version = "3.9.1"
     license = "https://github.com/nlohmann/json/blob/develop/LICENSE.MIT"
     author = "https://github.com/nlohmann/json/graphs/contributors"
     url = "https://github.com/nlohmann/json.git"
@@ -15,7 +15,7 @@ class SigslotConan(ConanFile):
 
     def source(self):
         self.run("git clone %s %s" % (self.url, self.name))
-        self.run("cd %s && git checkout tags/v%s master" % (self.name), (self.version))
+        self.run("cd %s && git checkout tags/v%s -b master" % (self.name, self.version))
 
     def package(self):
         self.copy("*.hpp", src=self.name)
